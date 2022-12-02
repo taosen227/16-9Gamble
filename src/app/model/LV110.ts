@@ -1,0 +1,23 @@
+export const LV110Battles = [
+    {
+        BattleName:"黃寶石大廳"
+    },
+    {
+        BattleName:"被遺忘的祭壇"
+    },
+    {
+        BattleName:"死亡辯證法"
+    },
+    {
+        BattleName:"怨恨洞窟"
+    },
+    {
+        BattleName:"偉大的執事"
+    },
+    {
+        BattleName:"公會出征"
+    },
+    {
+        BattleName:"特殊戰役"
+    }
+]
