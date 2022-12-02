@@ -23,29 +23,34 @@ export class LV100Component implements OnInit {
   constructor(private dialogService: NbDialogService) {}
 
   ngOnInit(): void {
-    // this.players = [
-    //   {
-    //     name:"123",
-    //     id:1
-    //   },
-    //   {
-    //     name:"123",
-    //     id:2
-    //   },
-    //   {
-    //     name:"123",
-    //     id:3
-    //   },
-    //   {
-    //     name:"123",
-    //     id:4
-    //   },
-    // ];
-    // this.generateAllData();
-    this.dialogService.open(EnterNameComponent).onClose.subscribe(res => {
-      this.players = res;
+    let test = false;
+    if(test){
+      this.players = [
+        {
+          name:"123",
+          id:1
+        },
+        {
+          name:"123",
+          id:2
+        },
+        {
+          name:"123",
+          id:3
+        },
+        {
+          name:"123",
+          id:4
+        },
+      ];
       this.generateAllData();
-    })
+    }
+    else{
+      this.dialogService.open(EnterNameComponent).onClose.subscribe(res => {
+        this.players = res;
+        this.generateAllData();
+      })
+    }
   }
 
   generateAllData() {

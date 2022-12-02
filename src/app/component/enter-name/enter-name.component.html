@@ -4,8 +4,8 @@
     </nb-card-header>
     <nb-card-body>
         <nb-select *ngIf="!input" hero status="primary" shape="round" fullWidth placeholder="請選擇參加人數" [(selected)]="selectplayer" (selectedChange)="generate()">
-            <nb-option value="4">4</nb-option>
-            <nb-option value="8">8</nb-option>
+            <nb-option value="4">4個人參加</nb-option>
+            <nb-option value="8">8個人參加</nb-option>
             <nb-option value="99">自行輸入</nb-option>
           </nb-select>
         <input *ngIf="input" hero nbInput fullWidth status="primary" shape="round" type="text" class="me-3" placeholder="請輸入參加者數量" [(ngModel)]="player" (ngModelChange)="generate()">

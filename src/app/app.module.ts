@@ -41,8 +41,8 @@ import { FormsModule } from '@angular/forms';
 export class AppModule { 
   constructor(private iconLib:NbIconLibraries){
     const nbIconPackParams:NbIconPackParams={
-      'LV100':'<img src="assets/icon/LV100.svg">',
-      'LV110':'<img src="assets/icon/LV110.svg">',
+      'LV100':'<img src="assets/icon/LV100.svg" width="25px">',
+      'LV110':'<img src="assets/icon/LV110.svg" width="25px">',
     }
     this.iconLib.registerSvgPack('VindictusGamble',nbIconPackParams);
   }

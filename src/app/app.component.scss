@@ -20,7 +20,7 @@ i:hover {
   nb-menu {
     nb-icon,
     span.menu-title {
-      font-size: 20px;
+      font-size: 25px;
       color: #FFFFFF;
     }
   }
@@ -35,5 +35,12 @@ i:hover {
   }
   .borderTop{
     border-top: 1.5px solid rgba($color: #808080, $alpha: 0.7);
+  }
+  .scroll{
+    overflow-y: scroll;
+    max-height:30rem;
+  }
+  .scroll::-webkit-scrollbar{
+    width: 0px;
   }
 }

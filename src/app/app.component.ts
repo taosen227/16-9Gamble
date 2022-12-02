@@ -14,4 +14,7 @@ export class AppComponent {
   toggleSideBar(){
     this.sideBarService.toggle(true,"sideBar")
   }
+  Open(){
+    window.open("https://th.bing.com/th/id/R.d84daac52e2dd78e895f774f689ecb65?rik=NgOy8uu7d7bQ7g&pid=ImgRaw&r=0")
+  }
 }
