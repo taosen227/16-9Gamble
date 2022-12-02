@@ -26,7 +26,7 @@ export class LV110Component implements OnInit {
     private toastrService:NbToastrService) {}
 
   ngOnInit(): void {
-    let test = true;
+    let test = false;
     if(test){
       this.players = [
         {

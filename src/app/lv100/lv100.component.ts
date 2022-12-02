@@ -30,7 +30,7 @@ export class LV100Component implements OnInit {
     private toastrService:NbToastrService) {}
 
   ngOnInit(): void {
-    let test = true;
+    let test = false;
     if(test){
       this.players = [
         {
