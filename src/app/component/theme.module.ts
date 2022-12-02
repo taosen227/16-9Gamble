@@ -4,6 +4,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NbLayoutModule, NbSidebarModule ,NbInputModule, NbIconModule, NbWindowModule, NbButtonModule, NbWindowRef, NbCardModule, NbSelectModule} from '@nebular/theme';
 import { RouterModule } from '@angular/router';
 import { EnterNameComponent } from './enter-name/enter-name.component';
+import { HowComponent } from './how/how.component';
+import { ReferenceComponent } from './reference/reference.component';
 
 
 
@@ -15,7 +17,9 @@ const NB_MODULES = [CommonModule, FormsModule,
   NbButtonModule,NbCardModule,NbSelectModule];
 
 const COMPONENTS = [
-  EnterNameComponent
+  EnterNameComponent,
+  HowComponent,
+  ReferenceComponent
 ];
 
 @NgModule({

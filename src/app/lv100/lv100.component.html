@@ -3,13 +3,13 @@
         <div class="col-6">
             <nb-card>
                 <nb-card-header class="text-center">
-                    顯示目前金額
+                    目前金額<i class="fa-solid fa-coins ms-2"></i>
                 </nb-card-header>
                 <nb-card-body>
                     <table class="table" *ngIf="players[1]">
                         <thead>
                           <tr>
-                            <th class="battleNameTitle">戰役名稱</th>
+                            <th class="battleNameTitle">戰役名稱<i class="fa-solid fa-gun ms-2"></i></th>
                             <th class="battleNameTitle" *ngFor="let data of players">{{data.name}}</th>
                           </tr>
                         </thead>
@@ -30,27 +30,29 @@
         </div>
         <div class="col-6">
             <nb-card>
-                <nb-card-header class="text-center">
-                    輸入需分贓之金額
+                <nb-card-header  class="text-center">
+                    <button nbButton hero status="primary" (click)="openReference()" class="me-3">金額參考</button>
+                    <span>輸入需分贓之金額<i class="fa-solid fa-hand-holding-dollar ms-2"></i></span>
+                    <button nbButton hero status="primary" (click)="openHow()" class="ms-3">如何輸入<i class="fa-solid fa-question"></i></button>
                 </nb-card-header>
                 <nb-card-body>
                     <div class="row col-12">
                         <div class="col-3 battleNameTitle">
-                            戰役名稱
+                            戰役名稱<i class="fa-solid fa-gun"></i>
                         </div>
                         <div class="col-9 row"><span *ngFor="let player of players" class="col d-flex justify-content-center battleNameTitle">{{player.name}}</span></div>
                     </div>
                     
-                    <div *ngFor="let Battle of Battles;let battles = index" class="row col-12">
+                    <div *ngFor="let Battle of Battles;let battles = index" class="row col-12 mb-2 borderTop">
                         <div class="col-3 d-flex align-items-center battleName">{{Battle.BattleName}}</div>
                         <div class="col-9">
-                            <div class="row mt-3" *ngFor=" let session of allData[battles].playerInfos[0].sessions ;let sessionNum = index">
-                                <input class="col" type="text" shape="round" *ngFor="let player of players;let i = index" nbInput 
+                            <div class="row mt-2" *ngFor=" let session of allData[battles].playerInfos[0].sessions ;let sessionNum = index">
+                                <input class="col me-2" hero status="primary" type="text" shape="round" *ngFor="let player of players;let i = index" nbInput 
                                 [(ngModel)]="allData[battles].playerInfos[i].sessions[sessionNum].money">
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 d-flex justify-content-center mt-3"><button nbButton shape="round" size="large" (click)="Calc()">計算</button></div>
+                    <div class="col-12 d-flex justify-content-center mt-3"><button nbButton hero status="primary" shape="round" size="large" (click)="Calc()">計算<i class="fa-solid fa-calculator ms-2"></i></button></div>
                 </nb-card-body>
             </nb-card>
         </div>

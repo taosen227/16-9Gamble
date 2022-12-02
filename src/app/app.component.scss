@@ -26,9 +26,14 @@ i:hover {
   }
   nb-card{
     border-radius: 30px;
+    min-width: 30rem;
     nb-card-header{
       font-size: 25px;
       font-weight: 700 !important;
+      border-bottom: 0;
     }
+  }
+  .borderTop{
+    border-top: 1.5px solid rgba($color: #808080, $alpha: 0.7);
   }
 }

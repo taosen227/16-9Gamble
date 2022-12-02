@@ -4,6 +4,8 @@ import {
   NbTreeGridHeaderCellDefDirective,
 } from '@nebular/theme';
 import { EnterNameComponent } from '../component/enter-name/enter-name.component';
+import { HowComponent } from '../component/how/how.component';
+import { ReferenceComponent } from '../component/reference/reference.component';
 import { LV100Battles } from '../model/LV100';
 import { player } from '../model/player';
 
@@ -90,12 +92,6 @@ export class LV100Component implements OnInit {
     });
   }
 
-  display() {
-    console.log(this.allData);
-    console.log(this.allMoney);
-
-  }
-
   Calc() {
     this.allMoney.forEach((Battle) => {
       Battle.moneyInfos.forEach((moneyInfo: any) => {
@@ -149,5 +145,13 @@ export class LV100Component implements OnInit {
       });
       this.settlementMoney[i] = settlement;
     }
+  }
+  
+  openHow(){
+    this.dialogService.open(HowComponent)
+  }
+  
+  openReference(){
+    this.dialogService.open(ReferenceComponent)
   }
 }

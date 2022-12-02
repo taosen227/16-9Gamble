@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogRef } from '@nebular/theme';
-import { player} from 'src/app/model/player';
+import { player } from 'src/app/model/player';
 
 @Component({
   selector: 'app-enter-name',
@@ -9,16 +9,29 @@ import { player} from 'src/app/model/player';
 })
 export class EnterNameComponent implements OnInit {
   player: number = 0;
+  selectplayer: number = 0;
   players: player[] = [];
+  input: boolean = false;
   constructor(private dialogRef: NbDialogRef<EnterNameComponent>) {}
 
   ngOnInit(): void {}
 
   generate() {
-    this.players = [];
-    for (let i = 1; i <= this.player; i++) {
-      let player = { id: i, name: '' };
-      this.players.push(player);
+    if (this.selectplayer == 99) {
+      this.input = true;
+      this.selectplayer = 0;
+      return
+    } 
+    else 
+    {
+      if(!this.input){
+        this.player = this.selectplayer;
+      }
+      this.players = [];
+      for (let i = 1; i <= this.player; i++) {
+        let player = { id: i, name: '' };
+        this.players.push(player);
+      }
     }
   }
 
