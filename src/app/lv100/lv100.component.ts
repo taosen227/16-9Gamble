@@ -76,6 +76,11 @@ export class LV100Component implements OnInit {
               session: 2,
               money: 0,
             },
+            {
+              session: 3,
+              money: 0,
+            }
+            
           ],
         };
         playerInfos.push(playerInfo);
