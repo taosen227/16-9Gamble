@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbButtonModule, NbSidebarModule, NbMenuModule, NbIconLibraries, NbIconPackParams, NbCardModule, NbDialogModule, NbSelectModule, NbInputModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbButtonModule, NbSidebarModule, NbMenuModule, NbIconLibraries, NbIconPackParams, NbCardModule, NbDialogModule, NbSelectModule, NbInputModule, NbToastrModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { LV100Component } from './lv100/lv100.component';
 import { LV110Component } from './lv110/lv110.component';
@@ -36,6 +36,7 @@ import { ClipboardModule } from 'ngx-clipboard';
     NbInputModule,
     FormsModule,
     ClipboardModule,
+    NbToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NbDialogService } from '@nebular/theme';
+import { NbDialogService, NbToastrService } from '@nebular/theme';
 import { ClipboardService } from 'ngx-clipboard';
 import { EnterNameComponent } from '../component/enter-name/enter-name.component';
 import { HowComponent } from '../component/how/how.component';
@@ -22,7 +22,8 @@ export class LV110Component implements OnInit {
   crazyNumber:number = 0;
   crazyMoney:number[]=[];
   calcCompeleted:boolean = false;
-  constructor(private dialogService: NbDialogService,private cliboardApi:ClipboardService) {}
+  constructor(private dialogService: NbDialogService,private cliboardApi:ClipboardService,
+    private toastrService:NbToastrService) {}
 
   ngOnInit(): void {
     let test = false;
@@ -177,7 +178,8 @@ export class LV110Component implements OnInit {
       }
       copystring += this.players[i].name + winOrLose + money + " ";
     }
-    this.cliboardApi.copyFromContent(copystring)
+    this.cliboardApi.copyFromContent(copystring);
+    this.toastrService.success("複製成功");
   }
 
   openHow(){

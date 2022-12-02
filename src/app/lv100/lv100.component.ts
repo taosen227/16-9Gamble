@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {
   NbDialogService,
+  NbToastrService,
   NbTreeGridHeaderCellDefDirective,
 } from '@nebular/theme';
 import { ClipboardService } from 'ngx-clipboard';
@@ -25,7 +26,8 @@ export class LV100Component implements OnInit {
   crazyNumber:number = 0;
   crazyMoney:number[]=[];
   calcCompeleted:boolean = false;
-  constructor(private dialogService: NbDialogService,private cliboardApi:ClipboardService) {}
+  constructor(private dialogService: NbDialogService,private cliboardApi:ClipboardService,
+    private toastrService:NbToastrService) {}
 
   ngOnInit(): void {
     let test = false;
@@ -155,7 +157,7 @@ export class LV100Component implements OnInit {
       });
       this.settlementMoney[i] = settlement;
     }
-    this.calcCompeleted = true
+    this.calcCompeleted = true;
   }
   
   crazyCalc(){
@@ -181,7 +183,8 @@ export class LV100Component implements OnInit {
       }
       copystring += this.players[i].name + winOrLose + money + " ";
     }
-    this.cliboardApi.copyFromContent(copystring)
+    this.cliboardApi.copyFromContent(copystring);
+    this.toastrService.success("複製成功");
   }
 
   openHow(){
