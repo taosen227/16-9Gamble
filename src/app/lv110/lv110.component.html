@@ -22,9 +22,14 @@
                             <td class="battleName">總結</td>
                             <td *ngFor="let settlement of settlementMoney">{{settlement}}</td>
                           </tr>
+                          <tr *ngIf="crazy">
+                            <td class="battleName">倍數</td>
+                            <td *ngFor="let money of crazyMoney">{{money}}</td>
+                          </tr>
                         </tbody>
                       </table>
-                    <span ></span>
+                      <span class="battleNameTitle me-3">你有多瘋<i class="fa-solid fa-poo ms-2"></i></span>
+                      <input nbInput type="text" hero status="primary" [(ngModel)]="crazyNumber" (ngModelChange)="crazyCalc()" [disabled]="!calcCompeleted">
                 </nb-card-body>
             </nb-card>
         </div>

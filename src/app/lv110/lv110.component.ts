@@ -17,10 +17,14 @@ export class LV110Component implements OnInit {
   allMoney: any[] = [];
   allData: any[] = [];
   settlementMoney:any[] = [];
+  crazy:boolean = false;
+  crazyNumber:number = 0;
+  crazyMoney:number[]=[];
+  calcCompeleted:boolean = false;
   constructor(private dialogService: NbDialogService) {}
 
   ngOnInit(): void {
-    let test = false;
+    let test = true;
     if(test){
       this.players = [
         {
@@ -146,6 +150,15 @@ export class LV110Component implements OnInit {
       });
       this.settlementMoney[i] = settlement;
     }
+    this.calcCompeleted = true
+  }
+
+  crazyCalc(){
+    this.crazyMoney = [];
+    this.crazy = true;
+    this.settlementMoney.forEach(money => {
+      this.crazyMoney.push(money*this.crazyNumber)
+    });
   }
 
   openHow(){
