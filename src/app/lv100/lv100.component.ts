@@ -27,7 +27,7 @@ export class LV100Component implements OnInit {
   constructor(private dialogService: NbDialogService) {}
 
   ngOnInit(): void {
-    let test = true;
+    let test = false;
     if(test){
       this.players = [
         {
