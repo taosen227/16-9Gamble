@@ -10,6 +10,7 @@ import { LV100Component } from './lv100/lv100.component';
 import { LV110Component } from './lv110/lv110.component';
 import { ThemeModule } from './component/theme.module';
 import { FormsModule } from '@angular/forms';
+import { ClipboardModule } from 'ngx-clipboard';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { FormsModule } from '@angular/forms';
     NbDialogModule.forRoot(),
     NbSelectModule,
     NbInputModule,
-    FormsModule
+    FormsModule,
+    ClipboardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

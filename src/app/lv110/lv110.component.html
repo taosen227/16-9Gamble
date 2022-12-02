@@ -1,6 +1,6 @@
 <div class="container-fluid" *ngIf="players[1]">
     <div class="row">
-        <div class="col-6">
+        <div class="col-12 col-xl-6">
             <nb-card>
                 <nb-card-header class="text-center">
                     目前金額<i class="fa-solid fa-coins ms-2"></i>
@@ -30,10 +30,11 @@
                       </table>
                       <span class="battleNameTitle me-3">你有多瘋<i class="fa-solid fa-poo ms-2"></i></span>
                       <input nbInput type="text" hero status="primary" [(ngModel)]="crazyNumber" (ngModelChange)="crazyCalc()" [disabled]="!calcCompeleted">
+                      <button nbButton type="text" hero status="primary" class="ms-5" [disabled]="!calcCompeleted" (click)="copy()">複製結果</button>
                 </nb-card-body>
             </nb-card>
         </div>
-        <div class="col-6">
+        <div class="col-12 col-xl-6">
             <nb-card>
                 <nb-card-header  class="text-center">
                     <button nbButton hero status="primary" (click)="openReference()" class="me-3">金額參考</button>

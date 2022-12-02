@@ -3,6 +3,7 @@ import {
   NbDialogService,
   NbTreeGridHeaderCellDefDirective,
 } from '@nebular/theme';
+import { ClipboardService } from 'ngx-clipboard';
 import { EnterNameComponent } from '../component/enter-name/enter-name.component';
 import { HowComponent } from '../component/how/how.component';
 import { ReferenceComponent } from '../component/reference/reference.component';
@@ -24,7 +25,7 @@ export class LV100Component implements OnInit {
   crazyNumber:number = 0;
   crazyMoney:number[]=[];
   calcCompeleted:boolean = false;
-  constructor(private dialogService: NbDialogService) {}
+  constructor(private dialogService: NbDialogService,private cliboardApi:ClipboardService) {}
 
   ngOnInit(): void {
     let test = false;
@@ -163,6 +164,24 @@ export class LV100Component implements OnInit {
     this.settlementMoney.forEach(money => {
       this.crazyMoney.push(money*this.crazyNumber)
     });
+  }
+
+  copy(){
+    let copystring:string = "";
+    for(let i = 0 ; i < this.players.length;i++){
+      let winOrLose = "";
+      let money = "";
+      if(this.settlementMoney[i] < 0){
+        winOrLose = "輸了";
+        money = (this.settlementMoney[i] - this.settlementMoney[i] - this.settlementMoney[i]).toString();
+      }
+      else{
+        winOrLose = "贏了";
+        money = this.settlementMoney[i];
+      }
+      copystring += this.players[i].name + winOrLose + money + " ";
+    }
+    this.cliboardApi.copyFromContent(copystring)
   }
 
   openHow(){

@@ -73,6 +73,12 @@ SOFTWARE.
 eva-icons
 MIT
 
+ngx-clipboard
+MIT
+
+ngx-window-token
+MIT
+
 rxjs
 Apache-2.0
                                Apache License
