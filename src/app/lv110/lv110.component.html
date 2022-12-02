@@ -28,10 +28,12 @@
                           </tr>
                         </tbody>
                       </table>
-                      <div *ngIf="calcCompeleted">
-                        <span class="battleNameTitle me-3">你有多瘋<i class="fa-solid fa-poo ms-2"></i></span>
-                        <input nbInput type="text" hero status="primary" [(ngModel)]="crazyNumber" (ngModelChange)="crazyCalc()">
-                        <button nbButton type="text" hero status="primary" class="ms-5" [disabled]="" (click)="copy()">複製結果</button>
+                      <div *ngIf="calcCompeleted" class="col-12 row d-flex align-items-center">
+                        <span class="battleNameTitle col-3 text-end">你有多瘋<i class="fa-solid fa-fire-flame-curved ms-2"></i></span>
+                        <div class="col-7">
+                            <input nbInput type="text" hero status="primary" shape="round" fullWidth [(ngModel)]="crazyNumber" (ngModelChange)="crazyCalc()">
+                        </div>
+                        <button nbButton type="text" hero status="primary" shape="round" class="col-2" [disabled]="" (click)="copy()">複製結果<i class="fa-solid fa-clipboard-user ms-2"></i></button>
                       </div>
                       
                 </nb-card-body>
@@ -61,7 +63,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 d-flex justify-content-center mt-3"><button nbButton hero status="primary" shape="round" size="large" (click)="Calc()">計算<i class="fa-solid fa-calculator ms-2"></i></button></div>
+                    <div class="col-12 d-flex justify-content-center mt-3"><button nbButton hero status="primary" class="col-8" shape="round" size="large" (click)="Calc()">計算<i class="fa-solid fa-calculator ms-2"></i></button></div>
                 </nb-card-body>
             </nb-card>
         </div>
