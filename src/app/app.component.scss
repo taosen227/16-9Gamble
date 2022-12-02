@@ -26,7 +26,7 @@ i:hover {
   }
   nb-card{
     border-radius: 30px;
-    min-width: 30rem;
+    min-height: 100%;
     nb-card-header{
       font-size: 25px;
       font-weight: 700 !important;
@@ -43,7 +43,7 @@ i:hover {
   }
   .scroll{
     overflow-y: scroll;
-    max-height:30rem;
+    max-height:27.5em;
   }
   .scroll::-webkit-scrollbar{
     width: 0px;

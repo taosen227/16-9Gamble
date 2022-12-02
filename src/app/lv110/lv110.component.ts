@@ -26,7 +26,7 @@ export class LV110Component implements OnInit {
     private toastrService:NbToastrService) {}
 
   ngOnInit(): void {
-    let test = false;
+    let test = true;
     if(test){
       this.players = [
         {
@@ -72,6 +72,10 @@ export class LV110Component implements OnInit {
               session: 2,
               money: 0,
             },
+            {
+              session: 3,
+              money: 0,
+            }
           ],
         };
         playerInfos.push(playerInfo);
