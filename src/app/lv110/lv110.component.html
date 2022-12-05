@@ -1,4 +1,4 @@
-<div class="container-fluid" *ngIf="players[1]">
+<div class="container-fluid" *ngIf="players[0]">
     <div class="row">
         <div class="col-12 col-xl-6">
             <nb-card>
@@ -6,7 +6,7 @@
                     目前金額<i class="fa-solid fa-coins ms-2"></i>
                 </nb-card-header>
                 <nb-card-body>
-                    <table class="table" *ngIf="players[1]">
+                    <table class="table" *ngIf="players[0]">
                         <thead>
                           <tr>
                             <th class="battleNameTitle">戰役名稱<i class="fa-solid fa-gun ms-2"></i></th>
@@ -19,10 +19,14 @@
                             <td *ngFor="let player of players;let i = index">{{allMoney[battles].moneyInfos[i].totalMoney}}</td>
                           </tr>
                           <tr>
-                            <td class="battleName">總結</td>
-                            <td *ngFor="let settlement of settlementMoney">{{settlement}}</td>
+                            <td class="battleName settlement">總結</td>
+                            <td class="settlement" *ngFor="let settlement of settlementMoney">{{settlement}}</td>
                           </tr>
-                          <tr *ngIf="importMoney[1]">
+                          <tr *ngIf="beforeMoney[0]">
+                            <td class="battleName">匯入前的金額</td>
+                            <td *ngFor="let before of beforeMoney">{{before}}</td>
+                          </tr>
+                          <tr *ngIf="importMoney[0]">
                             <td class="battleName">匯入的金額</td>
                             <td *ngFor="let import of importMoney">{{import}}</td>
                           </tr>
@@ -38,7 +42,7 @@
                             <input nbInput type="text" hero status="primary" shape="round" fullWidth [(ngModel)]="crazyNumber" (ngModelChange)="crazyCalc()">
                         </div>
                         <button nbButton type="text" hero status="primary" shape="round" class="col-2 me-3" (click)="copy(false)">複製結果<i class="fa-solid fa-clipboard-user ms-2"></i></button>
-                        <button nbButton type="text" hero status="primary" shape="round" class="col-3" (click)="copy(true)">複製倍數後結果<i class="fa-solid fa-fire-flame-curved ms-2"></i></button>
+                        <button nbButton [disabled]="!crazy" type="text" hero status="primary" shape="round" class="col-3" (click)="copy(true)">複製倍數後結果<i class="fa-solid fa-fire-flame-curved ms-2"></i></button>
                         <button nbButton type="text" hero status="primary" shape="round" class="col-5 mt-2" (click)="import()">匯入總結</button>
                       </div>
                 </nb-card-body>

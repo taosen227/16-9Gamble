@@ -24,6 +24,7 @@ export class LV110Component implements OnInit {
   crazyMoney:number[]=[];
   calcCompeleted:boolean = false;
   importMoney:any[]=[];
+  beforeMoney:any[]=[];
   constructor(private dialogService: NbDialogService,private cliboardApi:ClipboardService,
     private toastrService:NbToastrService) {}
 
@@ -162,6 +163,7 @@ export class LV110Component implements OnInit {
       });
       this.settlementMoney[i] = settlement;
     }
+    this.beforeMoney = [];
     this.importMoney = [];
     this.calcCompeleted = true;
   }
@@ -233,7 +235,8 @@ export class LV110Component implements OnInit {
       }
     }).onClose.subscribe(res => {
       if(res.success){
-        this.settlementMoney = res.settlementMoney,
+        this.beforeMoney = this.settlementMoney;
+        this.settlementMoney = res.settlementMoney;
         this.importMoney = res.importMoney
       }
     })

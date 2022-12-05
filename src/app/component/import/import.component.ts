@@ -13,18 +13,18 @@ export class ImportComponent implements OnInit {
   constructor(private dialogRef:NbDialogRef<ImportComponent>) { }
 
   ngOnInit(): void {
-    console.log(this.settlementMoney)
     for(let i = 0 ;i<this.settlementMoney.length;i++){
       this.importMoney.push(0)
     }
   }
 
   import(){
+    let settlementMoney = [];
     for(let i = 0 ; i<this.settlementMoney.length;i++){
-      this.settlementMoney[i] = this.settlementMoney[i] + parseInt(this.importMoney[i]);
+      settlementMoney.push(this.settlementMoney[i] + parseInt(this.importMoney[i]));
     }
     let res = {
-      settlementMoney:this.settlementMoney,
+      settlementMoney:settlementMoney,
       success:true,
       importMoney:this.importMoney
     }

@@ -27,11 +27,12 @@ export class LV100Component implements OnInit {
   crazyMoney:number[]=[];
   calcCompeleted:boolean = false;
   importMoney:any[]=[];
+  beforeMoney:any[]=[];
   constructor(private dialogService: NbDialogService,private cliboardApi:ClipboardService,
     private toastrService:NbToastrService) {}
 
   ngOnInit(): void {
-    let test = false;
+    let test = true;
     if(test){
       this.players = [
         {
@@ -167,6 +168,7 @@ export class LV100Component implements OnInit {
       });
       this.settlementMoney[i] = settlement;
     }
+    this.beforeMoney = [];
     this.importMoney = [];
     this.calcCompeleted = true;
   }
@@ -238,7 +240,8 @@ export class LV100Component implements OnInit {
       }
     }).onClose.subscribe(res => {
       if(res.success){
-        this.settlementMoney = res.settlementMoney,
+        this.beforeMoney = this.settlementMoney;
+        this.settlementMoney = res.settlementMoney;
         this.importMoney = res.importMoney
       }
     })
