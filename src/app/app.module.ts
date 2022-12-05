@@ -4,19 +4,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbButtonModule, NbSidebarModule, NbMenuModule, NbIconLibraries, NbIconPackParams, NbCardModule, NbDialogModule, NbSelectModule, NbInputModule, NbToastrModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbButtonModule, NbSidebarModule, NbMenuModule, NbIconLibraries, NbIconPackParams, NbCardModule, NbDialogModule, NbSelectModule, NbInputModule, NbToastrModule, NbStepperModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { LV100Component } from './lv100/lv100.component';
 import { LV110Component } from './lv110/lv110.component';
 import { ThemeModule } from './component/theme.module';
 import { FormsModule } from '@angular/forms';
 import { ClipboardModule } from 'ngx-clipboard';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LV100Component,
     LV110Component,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +39,7 @@ import { ClipboardModule } from 'ngx-clipboard';
     FormsModule,
     ClipboardModule,
     NbToastrModule.forRoot(),
+    NbStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -46,6 +49,8 @@ export class AppModule {
     const nbIconPackParams:NbIconPackParams={
       'LV100':'<img src="assets/icon/LV100.svg" width="25px">',
       'LV110':'<img src="assets/icon/LV110.svg" width="25px">',
+      'question':'<img src="assets/icon/question.svg">',
+      'house':'<img src="assets/icon/house.svg" width="25px">',
     }
     this.iconLib.registerSvgPack('VindictusGamble',nbIconPackParams);
   }

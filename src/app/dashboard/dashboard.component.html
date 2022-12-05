@@ -1,0 +1,84 @@
+<nb-card>
+    <nb-card-body>
+        <nb-stepper orientation="horizontal">
+            <nb-step [label]="labelOne">
+            <div class="col-12 row d-flex justify-content-center text-center">
+              <ng-template #labelOne>選擇戰役等級</ng-template>
+              <h4>步驟1：選擇戰役等級</h4>
+              <p class="lorem">
+                從左側選擇戰役等級
+              </p>
+              <div class="col-3 row mb-3">
+                <img class="img-fluid" src="../../assets/img/選擇戰役等級.png" alt="">
+              </div>
+              <div class="col-12 row d-flex justify-content-center">
+                <button nbButton hero status="info" class="col-4" nbStepperNext>下一步</button>
+              </div>
+            </div>
+            </nb-step>
+            <nb-step [label]="labelTwo">
+            <div class="col-12 row d-flex justify-content-center text-center">
+              <ng-template #labelTwo>輸入玩家資訊</ng-template>
+              <h4>步驟2：輸入玩家資訊</h4>
+              <p class="lorem">
+                依序輸入玩家數量及個別名稱
+              </p>
+              <div class="col-12 row mb-3">
+                <div class="col-6">
+                    <img class="img-fluid" src="../../assets/img/選擇參加人數.png" alt="">
+                    <span>可以選擇參加人數，預設有4人及8人，也可以自行輸入數量</span>
+                </div>
+                <div class="col-6">
+                    <img class="img-fluid" src="../../assets/img/輸入個別姓名.png" alt="">
+                    <span>輸入參加人員的名稱</span>
+                </div>
+              </div>
+            </div>
+              <div class="col-12 row d-flex justify-content-center">
+                <button nbButton hero status="info" class="col-4" nbStepperPrevious>上一步</button>
+                <div class="col-1"></div>
+                <button nbButton hero status="info" class="col-4" nbStepperNext>下一步</button>
+              </div>
+            </nb-step>
+            <nb-step label="輸入金額">
+            <div class="col-12 row d-flex justify-content-center text-center">
+              <h4>步驟3：輸入金額</h4>
+              <p class="lorem">
+                依照喜好輸入需分贓的金額
+              </p>
+              <div class="col-6 row mb-3">
+                <img src="../../assets/img/輸入金額.png" alt="">
+                <span>可以使用右上角按鈕來查看如何輸入</span>
+              </div>
+              <div class="col-12 row d-flex justify-content-center">
+                <button nbButton hero status="info" class="col-4" nbStepperPrevious>上一步</button>
+                <div class="col-1"></div>
+                <button nbButton hero status="info" class="col-4" nbStepperNext>下一步</button>
+              </div>
+            </div>
+            </nb-step>
+            <nb-step [label]="labelFour">
+            <div class="col-12 row d-flex justify-content-center text-center">
+              <ng-template #labelFour>計算金額</ng-template>
+              <h4>步驟4：計算金額</h4>
+              <p class="lorem">
+                按下計算後結果會顯示在左側
+              </p>
+              <div class="col-12 row mb-3">
+                <div class="col-6">
+                    <img class="img-fluid" src="../../assets/img/計算按鈕.png" alt="">
+                    <span>按下計算按鈕後結果就會顯示在左側頁面</span>
+                </div>
+                <div class="col-6">
+                    <img class="img-fluid" src="../../assets/img/左側結果.png" alt="">
+                    <span>可以通過在[你有多瘋]裡輸入要賭的倍數讓總結乘以輸入的倍數</span>
+                </div>
+              </div>
+              <div class="col-12 row d-flex justify-content-center">
+                <button nbButton hero status="info" class="col-4" nbStepperPrevious>上一步</button>
+              </div>
+            </div>
+            </nb-step>
+          </nb-stepper>
+    </nb-card-body>
+</nb-card>

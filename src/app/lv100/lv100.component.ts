@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {
   NbDialogService,
   NbToastrService,
-  NbTreeGridHeaderCellDefDirective,
 } from '@nebular/theme';
 import { ClipboardService } from 'ngx-clipboard';
 import { EnterNameComponent } from '../component/enter-name/enter-name.component';
 import { HowComponent } from '../component/how/how.component';
+import { ImportComponent } from '../component/import/import.component';
 import { ReferenceComponent } from '../component/reference/reference.component';
 import { LV100Battles } from '../model/LV100';
 import { player } from '../model/player';
@@ -26,6 +26,7 @@ export class LV100Component implements OnInit {
   crazyNumber:number = 0;
   crazyMoney:number[]=[];
   calcCompeleted:boolean = false;
+  importMoney:any[]=[];
   constructor(private dialogService: NbDialogService,private cliboardApi:ClipboardService,
     private toastrService:NbToastrService) {}
 
@@ -127,6 +128,10 @@ export class LV100Component implements OnInit {
           session++
         ) {
           for (let i = 0; i < this.allMoney[battles].moneyInfos.length; i++) {
+            if(this.allData[battles].playerInfos[player].sessions[session].money < 0){
+              this.toastrService.warning("金額不可以輸入負數，請重新輸入");
+              break;
+            }
             if (i === player) {
               let currentNumber: number = parseInt(
                 this.allMoney[battles].moneyInfos[player].totalMoney
@@ -162,6 +167,7 @@ export class LV100Component implements OnInit {
       });
       this.settlementMoney[i] = settlement;
     }
+    this.importMoney = [];
     this.calcCompeleted = true;
   }
   
@@ -173,23 +179,38 @@ export class LV100Component implements OnInit {
     });
   }
 
-  copy(){
+  copy(crazy:boolean){
     let copystring:string = "";
+    let crazyCopystring:string = "";
     for(let i = 0 ; i < this.players.length;i++){
       let winOrLose = "";
-      let money = "";
+      let money = 0;
+      let crazyMoney = 0;
       if(this.settlementMoney[i] < 0){
         winOrLose = "輸了";
-        money = (this.settlementMoney[i] - this.settlementMoney[i] - this.settlementMoney[i]).toString();
+        money = (this.settlementMoney[i] - this.settlementMoney[i] - this.settlementMoney[i]);
+        if(this.crazy){
+          crazyMoney = money * this.crazyNumber;
+        }
       }
       else{
         winOrLose = "贏了";
         money = this.settlementMoney[i];
+        if(this.crazy){
+          crazyMoney = money * this.crazyNumber;
+        }
       }
-      copystring += this.players[i].name + winOrLose + money + " ";
+      copystring += this.players[i].name + winOrLose + money.toString() + " ";
+      crazyCopystring += this.players[i].name + winOrLose + crazyMoney.toString() + " ";
     }
-    this.cliboardApi.copyFromContent(copystring);
-    this.toastrService.success("複製成功");
+    if(crazy){
+      this.cliboardApi.copyFromContent(crazyCopystring);
+      this.toastrService.success("複製倍數後結果成功");
+    }
+    else{
+      this.cliboardApi.copyFromContent(copystring);
+      this.toastrService.success("複製成功");
+    }
   }
 
   openHow(){
@@ -198,5 +219,28 @@ export class LV100Component implements OnInit {
   
   openReference(){
     this.dialogService.open(ReferenceComponent)
+  }
+
+  Deactivate(){
+    if(this.allData[1]){
+      return confirm("是否切換頁面")
+    }
+    else{
+      return true
+    }
+  }
+
+  import(){
+    this.dialogService.open(ImportComponent,{
+      context:{
+        settlementMoney:this.settlementMoney,
+        players:this.players
+      }
+    }).onClose.subscribe(res => {
+      if(res.success){
+        this.settlementMoney = res.settlementMoney,
+        this.importMoney = res.importMoney
+      }
+    })
   }
 }

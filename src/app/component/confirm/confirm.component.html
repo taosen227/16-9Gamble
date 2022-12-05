@@ -1,0 +1,16 @@
+<nb-card>
+    <nb-card-body>
+        {{content}}
+    </nb-card-body>
+    <nb-card-footer>
+        <div class="col-12 row">
+            <div class="col-5">
+                <button nbButton (click)="confirm()">確認</button>
+            </div>
+            <div class="col"></div>
+            <div class="col-5">
+                <button nbButton (click)="cancel()">取消</button>
+            </div>
+        </div>
+    </nb-card-footer>
+</nb-card>

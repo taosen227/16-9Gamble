@@ -1,0 +1,12 @@
+.cardscroll{
+    overflow-y: scroll;
+    height:40em;
+    width: 80rem;
+}
+.cardscroll::-webkit-scrollbar{
+    width: 0px;
+}
+span{
+    font-size: 18px;
+    line-height: 20px;
+}

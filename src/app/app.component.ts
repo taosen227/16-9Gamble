@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NbSidebarService } from '@nebular/theme';
+import { NbDialogService, NbSidebarService } from '@nebular/theme';
+import { StepperComponent } from './component/stepper/stepper.component';
 import { Menu_Items } from './model/menu';
 
 @Component({
@@ -8,7 +9,8 @@ import { Menu_Items } from './model/menu';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(private sideBarService:NbSidebarService){}
+  constructor(private sideBarService:NbSidebarService,
+    private dialogService:NbDialogService){}
   title = 'VindictusGamble';
   menu = Menu_Items
   toggleSideBar(){
@@ -16,5 +18,8 @@ export class AppComponent {
   }
   Open(){
     window.open("https://th.bing.com/th/id/R.d84daac52e2dd78e895f774f689ecb65?rik=NgOy8uu7d7bQ7g&pid=ImgRaw&r=0")
+  }
+  OpenInfo(){
+    this.dialogService.open(StepperComponent)
   }
 }

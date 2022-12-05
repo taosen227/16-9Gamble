@@ -1,0 +1,23 @@
+<nb-card>
+    <nb-card-header class="text-center">
+        匯入總結
+    </nb-card-header>
+    <nb-card-body>
+       <div class="col-12 row d-flex justify-content-center">
+            <div class="battleNameTitle col-4 d-flex align-items-center mt-3">玩家名稱<i class="fa-solid fa-user ms-2"></i></div>
+            <div class="battleNameTitle col-8 row mt-3">
+                <div *ngFor="let data of players" class="col">{{data.name}}</div>
+            </div>
+            <div class="battleNameTitle col-4 d-flex align-items-center mt-3">目前總結</div>
+            <div class="battleNameTitle col-8 row mt-3">
+                <div class="col" *ngFor="let settlement of settlementMoney">{{settlement}}</div>
+            </div>
+            <div class="battleNameTitle col-4 d-flex align-items-center mt-3">匯入總結</div>
+            <div class="battleNameTitle col-8 row mt-3">
+                <input *ngFor="let settlement of settlementMoney;let i = index" class="col me-2" hero status="primary" type="text" shape="round" nbInput 
+                    [(ngModel)]="importMoney[i]">
+            </div>
+            <button class="col-5 mt-3" nbButton type="text" hero status="primary" shape="round" (click)="import()">匯入</button>
+       </div>
+    </nb-card-body>
+</nb-card>

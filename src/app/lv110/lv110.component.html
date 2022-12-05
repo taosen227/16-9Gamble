@@ -22,20 +22,25 @@
                             <td class="battleName">總結</td>
                             <td *ngFor="let settlement of settlementMoney">{{settlement}}</td>
                           </tr>
+                          <tr *ngIf="importMoney[1]">
+                            <td class="battleName">匯入的金額</td>
+                            <td *ngFor="let import of importMoney">{{import}}</td>
+                          </tr>
                           <tr *ngIf="crazy">
                             <td class="battleName">倍數</td>
                             <td *ngFor="let money of crazyMoney">{{money}}</td>
                           </tr>
                         </tbody>
                       </table>
-                      <div *ngIf="calcCompeleted" class="col-12 row d-flex align-items-center">
+                      <div *ngIf="calcCompeleted" class="col-12 row d-flex align-items-center justify-content-center">
                         <span class="battleNameTitle col-3 text-end">你有多瘋<i class="fa-solid fa-fire-flame-curved ms-2"></i></span>
-                        <div class="col-7">
+                        <div class="col-3">
                             <input nbInput type="text" hero status="primary" shape="round" fullWidth [(ngModel)]="crazyNumber" (ngModelChange)="crazyCalc()">
                         </div>
-                        <button nbButton type="text" hero status="primary" shape="round" class="col-2" [disabled]="" (click)="copy()">複製結果<i class="fa-solid fa-clipboard-user ms-2"></i></button>
+                        <button nbButton type="text" hero status="primary" shape="round" class="col-2 me-3" (click)="copy(false)">複製結果<i class="fa-solid fa-clipboard-user ms-2"></i></button>
+                        <button nbButton type="text" hero status="primary" shape="round" class="col-3" (click)="copy(true)">複製倍數後結果<i class="fa-solid fa-fire-flame-curved ms-2"></i></button>
+                        <button nbButton type="text" hero status="primary" shape="round" class="col-5 mt-2" (click)="import()">匯入總結</button>
                       </div>
-                      
                 </nb-card-body>
             </nb-card>
         </div>
@@ -46,20 +51,22 @@
                     <span>輸入需分贓之金額<i class="fa-solid fa-hand-holding-dollar ms-2"></i></span>
                     <button nbButton hero status="primary" (click)="openHow()" class="ms-3">如何輸入<i class="fa-solid fa-question"></i></button>
                 </nb-card-header>
-                <nb-card-body  class="scroll">
+                <nb-card-body>
                     <div class="row col-12">
                         <div class="col-3 battleNameTitle">
                             戰役名稱<i class="fa-solid fa-gun"></i>
                         </div>
                         <div class="col-9 row"><span *ngFor="let player of players" class="col d-flex justify-content-center battleNameTitle">{{player.name}}</span></div>
                     </div>
-                    
-                    <div *ngFor="let Battle of Battles;let battles = index" class="row col-12 mb-2 borderTop">
-                        <div class="col-3 d-flex align-items-center battleName">{{Battle.BattleName}}</div>
-                        <div class="col-9">
-                            <div class="row mt-2" *ngFor=" let session of allData[battles].playerInfos[0].sessions ;let sessionNum = index">
-                                <input class="col me-2" hero status="primary" type="text" shape="round" *ngFor="let player of players;let i = index" nbInput 
-                                [(ngModel)]="allData[battles].playerInfos[i].sessions[sessionNum].money">
+                    <div class="scroll">
+                        <div *ngFor="let Battle of Battles;let battles = index" class="row col-12 mb-2 borderTop">
+                            <div class="col-3 d-flex align-items-center battleName">{{Battle.BattleName}}
+                            </div>
+                            <div class="col-9">
+                                <div class="row mt-2" *ngFor=" let session of allData[battles].playerInfos[0].sessions ;let sessionNum = index">
+                                    <input class="col me-2" hero status="primary" type="text" shape="round" *ngFor="let player of players;let i = index" nbInput 
+                                    [(ngModel)]="allData[battles].playerInfos[i].sessions[sessionNum].money">
+                                </div>
                             </div>
                         </div>
                     </div>
