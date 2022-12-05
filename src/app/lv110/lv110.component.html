@@ -22,11 +22,11 @@
                             <td class="battleName settlement">總結</td>
                             <td class="settlement" *ngFor="let settlement of settlementMoney">{{settlement}}</td>
                           </tr>
-                          <tr *ngIf="beforeMoney[0] !== '' ">
+                          <tr *ngIf="beforeMoney[0] || beforeMoney[0] === 0">
                             <td class="battleName">匯入前的金額</td>
                             <td *ngFor="let before of beforeMoney">{{before}}</td>
                           </tr>
-                          <tr *ngIf="importMoney[0] !== '' ">
+                          <tr *ngIf="importMoney[0] || importMoney[0] === 0">
                             <td class="battleName">匯入的金額</td>
                             <td *ngFor="let import of importMoney">{{import}}</td>
                           </tr>
