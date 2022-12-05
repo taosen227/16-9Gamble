@@ -1,16 +1,29 @@
 import { Component } from '@angular/core';
+import { ChildrenOutletContexts } from '@angular/router';
 import { NbDialogService, NbSidebarService } from '@nebular/theme';
 import { StepperComponent } from './component/stepper/stepper.component';
+import { slideInAnimation } from './model/anime';
 import { Menu_Items } from './model/menu';
-
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  // ...
+} from '@angular/animations';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    slideInAnimation
+  ]
 })
 export class AppComponent {
   constructor(private sideBarService:NbSidebarService,
-    private dialogService:NbDialogService){}
+    private dialogService:NbDialogService,
+    private contexts:ChildrenOutletContexts){}
   title = 'VindictusGamble';
   menu = Menu_Items
   toggleSideBar(){
@@ -21,5 +34,8 @@ export class AppComponent {
   }
   OpenInfo(){
     this.dialogService.open(StepperComponent)
+  }
+  getRouteAnimationData() {
+    return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
   }
 }

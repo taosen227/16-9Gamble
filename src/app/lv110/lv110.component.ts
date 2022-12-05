@@ -7,11 +7,30 @@ import { ImportComponent } from '../component/import/import.component';
 import { ReferenceComponent } from '../component/reference/reference.component';
 import { LV110Battles } from '../model/LV110';
 import { player } from '../model/player';
-
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  // ...
+} from '@angular/animations';
 @Component({
   selector: 'app-lv110',
   templateUrl: './lv110.component.html',
-  styleUrls: ['./lv110.component.scss']
+  styleUrls: ['./lv110.component.scss'],
+  animations: [
+    trigger('flyInOut', [
+      state('in', style({ transform: 'translateX(0)' })),
+      transition('void => *', [
+        style({ transform: 'translateX(-100%)' }),
+        animate(500)
+      ]),
+      transition('* => void', [
+        animate(500, style({ transform: 'translateX(100%)' }))
+      ])
+    ])
+  ]
 })
 export class LV110Component implements OnInit {
   Battles = LV110Battles;

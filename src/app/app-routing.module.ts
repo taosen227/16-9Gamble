@@ -9,17 +9,20 @@ import { LV110Component } from './lv110/lv110.component';
 const routes: Routes = [
   {
     path:'dashboard',
-    component:DashboardComponent
+    component:DashboardComponent,
+    data: { animation: 'dashboard' }
   },
   {
     path:'LV100',
     component:LV100Component,
-    canDeactivate:[LV100Guard]
+    canDeactivate:[LV100Guard],
+    data: { animation: 'LV100' }
   },
   {
     path:'LV110',
     component:LV110Component,
-    canDeactivate:[LV110Guard]
+    canDeactivate:[LV110Guard],
+    data: { animation: 'LV110' }
   },
   {
     path:'',

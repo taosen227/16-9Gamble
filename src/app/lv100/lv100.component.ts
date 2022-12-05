@@ -10,11 +10,30 @@ import { ImportComponent } from '../component/import/import.component';
 import { ReferenceComponent } from '../component/reference/reference.component';
 import { LV100Battles } from '../model/LV100';
 import { player } from '../model/player';
-
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  // ...
+} from '@angular/animations';
 @Component({
   selector: 'app-lv100',
   templateUrl: './lv100.component.html',
   styleUrls: ['./lv100.component.scss'],
+  animations: [
+    trigger('flyInOut', [
+      state('in', style({ transform: 'translateX(0)' })),
+      transition('void => *', [
+        style({ transform: 'translateX(-100%)' }),
+        animate(500)
+      ]),
+      transition('* => void', [
+        animate(500, style({ transform: 'translateX(100%)' }))
+      ])
+    ])
+  ]
 })
 export class LV100Component implements OnInit {
   Battles = LV100Battles;
@@ -244,6 +263,7 @@ export class LV100Component implements OnInit {
         this.settlementMoney = res.settlementMoney;
         this.importMoney = res.importMoney
       }
+      console.log(this.importMoney)
     })
   }
 }

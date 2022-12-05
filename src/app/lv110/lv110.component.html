@@ -22,11 +22,11 @@
                             <td class="battleName settlement">總結</td>
                             <td class="settlement" *ngFor="let settlement of settlementMoney">{{settlement}}</td>
                           </tr>
-                          <tr *ngIf="beforeMoney[0]">
+                          <tr *ngIf="beforeMoney[0] !== '' ">
                             <td class="battleName">匯入前的金額</td>
                             <td *ngFor="let before of beforeMoney">{{before}}</td>
                           </tr>
-                          <tr *ngIf="importMoney[0]">
+                          <tr *ngIf="importMoney[0] !== '' ">
                             <td class="battleName">匯入的金額</td>
                             <td *ngFor="let import of importMoney">{{import}}</td>
                           </tr>
@@ -36,7 +36,7 @@
                           </tr>
                         </tbody>
                       </table>
-                      <div *ngIf="calcCompeleted" class="col-12 row d-flex align-items-center justify-content-center">
+                      <div *ngIf="calcCompeleted" @flyInOut class="col-12 row d-flex align-items-center justify-content-center">
                         <span class="battleNameTitle col-3 text-end">你有多瘋<i class="fa-solid fa-fire-flame-curved ms-2"></i></span>
                         <div class="col-3">
                             <input nbInput type="text" hero status="primary" shape="round" fullWidth [(ngModel)]="crazyNumber" (ngModelChange)="crazyCalc()">
