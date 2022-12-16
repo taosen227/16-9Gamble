@@ -1,8 +1,16 @@
 <nb-card>
     <nb-card-header class="text-center">
-        輸入參加者資訊
+        <nb-radio-group [(ngModel)]="option">
+            <nb-radio
+              *ngFor="let option of options"
+              [value]="option.value">
+              {{ option.label }}
+            </nb-radio>
+          </nb-radio-group>
+        
     </nb-card-header>
-    <nb-card-body>
+    <nb-card-body *ngIf="option">
+        <input type="text" hero nbInput fullWidth status="primary" shape="round" [(ngModel)]="recorder" class="mb-3" placeholder="請輸入紀錄者">
         <nb-select *ngIf="!input" hero status="primary" shape="round" fullWidth placeholder="請選擇參加人數" [(selected)]="selectplayer" (selectedChange)="generate()">
             <nb-option value="4">4個人參加</nb-option>
             <nb-option value="8">8個人參加</nb-option>
@@ -16,6 +24,17 @@
         </div>
         <div class="col-12 d-flex justify-content-center mt-3">
             <button *ngIf="players[1]" class="col-6" nbButton status="success" (click)="confirm()">確認</button>
+        </div>
+    </nb-card-body>
+    <nb-card-body *ngIf="!option">
+        <nb-select [(selected)]="gambleSelect" hero status="primary" shape="round" fullWidth placeholder="請選擇場次">
+            <nb-option *ngFor="let Gamble of allGamble; let i = index" [value]="i">
+                {{Gamble.gambleDate | date: 'YYYY-MM-dd HH:mm'}}
+                {{Gamble.recorder}}
+            </nb-option>
+        </nb-select>
+        <div class="col-12 d-flex justify-content-center mt-3">
+            <button class="col-6" nbButton status="success" (click)="confirm()">確認</button>
         </div>
     </nb-card-body>
 </nb-card>

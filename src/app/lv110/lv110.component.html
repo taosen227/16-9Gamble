@@ -1,82 +1,82 @@
 <div class="container-fluid" *ngIf="players[0]">
-    <div class="row">
-        <div class="col-12 col-xl-6">
-            <nb-card>
-                <nb-card-header class="text-center">
-                    目前金額<i class="fa-solid fa-coins ms-2"></i>
-                </nb-card-header>
-                <nb-card-body>
-                    <table class="table" *ngIf="players[0]">
-                        <thead>
-                          <tr>
-                            <th class="battleNameTitle">戰役名稱<i class="fa-solid fa-gun ms-2"></i></th>
-                            <th class="battleNameTitle" *ngFor="let data of players">{{data.name}}</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let Battle of Battles;let battles = index">
-                            <td scope="row" class="battleName">{{Battle.BattleName}}</td>
-                            <td *ngFor="let player of players;let i = index">{{allMoney[battles].moneyInfos[i].totalMoney}}</td>
-                          </tr>
-                          <tr>
-                            <td class="battleName settlement">總結</td>
-                            <td class="settlement" *ngFor="let settlement of settlementMoney">{{settlement}}</td>
-                          </tr>
-                          <tr *ngIf="beforeMoney[0] || beforeMoney[0] === 0">
-                            <td class="battleName">匯入前的金額</td>
-                            <td *ngFor="let before of beforeMoney">{{before}}</td>
-                          </tr>
-                          <tr *ngIf="importMoney[0] || importMoney[0] === 0">
-                            <td class="battleName">匯入的金額</td>
-                            <td *ngFor="let import of importMoney">{{import}}</td>
-                          </tr>
-                          <tr *ngIf="crazy">
-                            <td class="battleName">倍數</td>
-                            <td *ngFor="let money of crazyMoney">{{money}}</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      <div *ngIf="calcCompeleted" @flyInOut class="col-12 row d-flex align-items-center justify-content-center">
-                        <span class="battleNameTitle col-3 text-end">你有多瘋<i class="fa-solid fa-fire-flame-curved ms-2"></i></span>
-                        <div class="col-3">
-                            <input nbInput type="text" hero status="primary" shape="round" fullWidth [(ngModel)]="crazyNumber" (ngModelChange)="crazyCalc()">
-                        </div>
-                        <button nbButton type="text" hero status="primary" shape="round" class="col-2 me-3" (click)="copy(false)">複製結果<i class="fa-solid fa-clipboard-user ms-2"></i></button>
-                        <button nbButton [disabled]="!crazy" type="text" hero status="primary" shape="round" class="col-3" (click)="copy(true)">複製倍數後結果<i class="fa-solid fa-fire-flame-curved ms-2"></i></button>
-                        <button nbButton type="text" hero status="primary" shape="round" class="col-5 mt-2" (click)="import()">匯入總結</button>
+  <div class="row">
+      <div class="col-12 col-xl-6">
+          <nb-card>
+              <nb-card-header class="text-center">
+                  目前金額<i class="fa-solid fa-coins ms-2"></i>
+              </nb-card-header>
+              <nb-card-body>
+                  <table class="table" *ngIf="players[0]">
+                      <thead>
+                        <tr>
+                          <th class="battleNameTitle">戰役名稱<i class="fa-solid fa-gun ms-2"></i></th>
+                          <th class="battleNameTitle" *ngFor="let data of players">{{data}}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let Battle of Battles;let battles = index">
+                          <td scope="row" class="battleName">{{Battle.BattleName}}</td>
+                          <td *ngFor="let player of players;let i = index">{{allMoney[battles].moneyInfos[i].totalMoney}}</td>
+                        </tr>
+                        <tr>
+                          <td class="battleName settlement">總結</td>
+                          <td class="settlement" *ngFor="let settlement of settlementMoney">{{settlement}}</td>
+                        </tr>
+                        <tr *ngIf="beforeMoney[0] || beforeMoney[0] === 0">
+                          <td class="battleName">匯入前的金額</td>
+                          <td *ngFor="let before of beforeMoney">{{before}}</td>
+                        </tr>
+                        <tr *ngIf="importMoney[0] || importMoney[0] === 0">
+                          <td class="battleName">匯入的金額</td>
+                          <td *ngFor="let import of importMoney">{{import}}</td>
+                        </tr>
+                        <tr *ngIf="crazy">
+                          <td class="battleName">倍數</td>
+                          <td *ngFor="let money of crazyMoney">{{money}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div *ngIf="calcCompeleted" @flyInOut class="col-12 row d-flex align-items-center justify-content-center">
+                      <span class="battleNameTitle col-3 text-end">你有多瘋<i class="fa-solid fa-fire-flame-curved ms-2"></i></span>
+                      <div class="col-3">
+                          <input nbInput type="text" hero status="primary" shape="round" fullWidth [(ngModel)]="crazyNumber" (ngModelChange)="crazyCalc()">
                       </div>
-                </nb-card-body>
-            </nb-card>
-        </div>
-        <div class="col-12 col-xl-6">
-            <nb-card>
-                <nb-card-header  class="text-center">
-                    <button nbButton hero status="primary" (click)="openReference()" class="me-3">金額參考</button>
-                    <span>輸入需分贓之金額<i class="fa-solid fa-hand-holding-dollar ms-2"></i></span>
-                    <button nbButton hero status="primary" (click)="openHow()" class="ms-3">如何輸入<i class="fa-solid fa-question"></i></button>
-                </nb-card-header>
-                <nb-card-body>
-                    <div class="row col-12">
-                        <div class="col-3 battleNameTitle">
-                            戰役名稱<i class="fa-solid fa-gun"></i>
-                        </div>
-                        <div class="col-9 row"><span *ngFor="let player of players" class="col d-flex justify-content-center battleNameTitle">{{player.name}}</span></div>
+                      <button nbButton type="text" hero status="primary" shape="round" class="col-2 me-3" (click)="copy(false)">複製結果<i class="fa-solid fa-clipboard-user ms-2"></i></button>
+                      <button nbButton [disabled]="!crazy" type="text" hero status="primary" shape="round" class="col-3" (click)="copy(true)">複製倍數後結果<i class="fa-solid fa-fire-flame-curved ms-2"></i></button>
+                      <button nbButton type="text" hero status="primary" shape="round" class="col-5 mt-2" (click)="import()">匯入總結</button>
                     </div>
-                    <div class="scroll">
-                        <div *ngFor="let Battle of Battles;let battles = index" class="row col-12 mb-2 borderTop">
-                            <div class="col-3 d-flex align-items-center battleName">{{Battle.BattleName}}
-                            </div>
-                            <div class="col-9">
-                                <div class="row mt-2" *ngFor=" let session of allData[battles].playerInfos[0].sessions ;let sessionNum = index">
-                                    <input class="col me-2" hero status="primary" type="text" shape="round" *ngFor="let player of players;let i = index" nbInput 
-                                    [(ngModel)]="allData[battles].playerInfos[i].sessions[sessionNum].money">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 d-flex justify-content-center mt-3"><button nbButton hero status="primary" class="col-8" shape="round" size="large" (click)="Calc()">計算<i class="fa-solid fa-calculator ms-2"></i></button></div>
-                </nb-card-body>
-            </nb-card>
-        </div>
-    </div>
+              </nb-card-body>
+          </nb-card>
+      </div>
+      <div class="col-12 col-xl-6">
+          <nb-card>
+              <nb-card-header  class="text-center">
+                  <button nbButton hero status="primary" (click)="openReference()" class="me-3">金額參考</button>
+                  <span>輸入需分贓之金額<i class="fa-solid fa-hand-holding-dollar ms-2"></i></span>
+                  <button nbButton hero status="primary" (click)="openHow()" class="ms-3">如何輸入<i class="fa-solid fa-question"></i></button>
+              </nb-card-header>
+              <nb-card-body>
+                  <div class="row col-12">
+                      <div class="col-3 battleNameTitle">
+                          戰役名稱<i class="fa-solid fa-gun"></i>
+                      </div>
+                      <div class="col-9 row"><span *ngFor="let player of players" class="col d-flex justify-content-center battleNameTitle">{{player}}</span></div>
+                  </div>
+                  <div class="scroll">
+                      <div *ngFor="let Battle of Battles;let battles = index" class="row col-12 mb-2 borderTop">
+                          <div class="col-3 d-flex align-items-center battleName">{{Battle.BattleName}}
+                          </div>
+                          <div class="col-9">
+                              <div class="row mt-2" *ngFor=" let session of allData[battles].playerInfos[0].sessions ;let sessionNum = index">
+                                  <input class="col me-2" hero status="primary" type="text" shape="round" *ngFor="let player of players;let i = index" nbInput 
+                                  [(ngModel)]="allData[battles].playerInfos[i].sessions[sessionNum].money">
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-12 d-flex justify-content-center mt-3"><button nbButton hero status="primary" class="col-8" shape="round" size="large" (click)="Calc()">計算<i class="fa-solid fa-calculator ms-2"></i></button></div>
+              </nb-card-body>
+          </nb-card>
+      </div>
+  </div>
 </div>

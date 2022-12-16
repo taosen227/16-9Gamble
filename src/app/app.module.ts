@@ -12,7 +12,7 @@ import { ThemeModule } from './component/theme.module';
 import { FormsModule } from '@angular/forms';
 import { ClipboardModule } from 'ngx-clipboard';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +39,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FormsModule,
     ClipboardModule,
     NbToastrModule.forRoot(),
-    NbStepperModule
+    NbStepperModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

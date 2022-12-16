@@ -10,7 +10,7 @@
                         <thead>
                           <tr>
                             <th class="battleNameTitle">戰役名稱<i class="fa-solid fa-gun ms-2"></i></th>
-                            <th class="battleNameTitle" *ngFor="let data of players">{{data.name}}</th>
+                            <th class="battleNameTitle" *ngFor="let data of players">{{data}}</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -60,7 +60,7 @@
                         <div class="col-3 battleNameTitle">
                             戰役名稱<i class="fa-solid fa-gun"></i>
                         </div>
-                        <div class="col-9 row"><span *ngFor="let player of players" class="col d-flex justify-content-center battleNameTitle">{{player.name}}</span></div>
+                        <div class="col-9 row"><span *ngFor="let player of players" class="col d-flex justify-content-center battleNameTitle">{{player}}</span></div>
                     </div>
                     <div class="scroll">
                         <div *ngFor="let Battle of Battles;let battles = index" class="row col-12 mb-2 borderTop">
